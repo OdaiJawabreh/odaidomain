@@ -4,7 +4,7 @@ require("dotenv").config();
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   //release_1
-  ssr: true,
+  ssr: false,
   server: {
     port: 30121, // default: 3000
   },
