@@ -1,5 +1,13 @@
 <template>
-  <div>
+  <div :style="{ backgroundColor: color }">
+    <div class="odai2">
+      <v-btn @click="changeColor">
+        <v-icon>fas fa-tachometer-alt</v-icon> Change Background Color
+      </v-btn>
+      <v-btn>
+        <v-icon>fas fa-tachometer-alt</v-icon> Reset
+      </v-btn>
+    </div>
     <div id="parallax-world-of-ugg">
       <section>
         <div class="title">
@@ -142,8 +150,25 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "Example",
+  data() {
+    return {
+      color: "ffff",
+    };
+  },
+  methods: {
+    async changeColor() {
+      try {
+        let response = await axios.get("https://api.odai.firas-odia.com/");
+        this.color = response.data;
+        // console.log("response => ", response);
+      } catch (error) {
+        console.log("err", error);
+      }
+    },
+  },
 };
 </script>
 
@@ -152,6 +177,13 @@ export default {
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic);
 
 /* Override UGG site */
+.odai2 {
+  display: flex;
+  justify-content: center;
+}
+/* .odai {
+  background-color: blue;
+} */
 #main {
   width: 100%;
   padding: 0;
