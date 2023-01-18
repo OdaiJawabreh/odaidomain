@@ -5,7 +5,24 @@ pipeline {
     stage('Pre Build') {
       steps {
         echo(" Pre Build Stage")
-        sh "ls -l -a"
+        
+        sshPublisher(
+            continueOnError: false, failOnError: true,
+            publishers: [
+                sshPublisherDesc(
+                configName: "odai server",
+                verbose: true,
+                transfers: [
+                sshTransfer(
+                        execCommand:" rm -rf odaidomain"
+                    ),
+                    sshTransfer(
+                        sourceFiles: "**/*",
+                        remoteDirectory: "odaidomain",
+                        execCommand:" sudo npm i"
+                )
+             ])
+            ])
       }
 
     }
