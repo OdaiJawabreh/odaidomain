@@ -18,8 +18,8 @@ pipeline {
                     ),
                     sshTransfer(
                         sourceFiles: "**/*",
-                        remoteDirectory: "cd /var/www/ && odaidomain",
-                        execCommand:"cd /var/www/odaidomain && sudo npm i && sudo npm run build && sudo pm2 start"
+                        remoteDirectory: "cd odaidomain",
+                        execCommand:"cd odaidomain && sudo npm i && sudo npm run build && sudo pm2 start"
                 )
              ])
             ])
