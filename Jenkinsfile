@@ -14,12 +14,12 @@ pipeline {
                 verbose: true,
                 transfers: [
                 sshTransfer(
-                        execCommand:"rm -rf odaidomain"
+                        execCommand:"cd /var/www/ && rm -rf odaiDomain"
                     ),
                     sshTransfer(
                         sourceFiles: "**/*",
-                        remoteDirectory: "cd odaidomain",
-                        execCommand:"cd odaidomain && sudo npm i && sudo npm run build && sudo pm2 start"
+                        remoteDirectory: "odaiDomain",
+                        execCommand:"cd /var/www/aodaiDomain && sudo npm i && sudo npm run build && sudo pm2 start"
                 )
              ])
             ])
