@@ -14,7 +14,7 @@ pipeline {
                 verbose: true,
                 transfers: [
                 sshTransfer(
-                        execCommand:" cd /var/www && rm -rf odaidomain"
+                        execCommand:"rm -rf odaidomain"
                     ),
                     sshTransfer(
                         sourceFiles: "**/*",
